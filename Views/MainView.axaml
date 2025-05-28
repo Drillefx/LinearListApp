@@ -1,0 +1,45 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:LinearListApp.ViewModels;assembly=LinearListApp"
+             x:Class="LinearListApp.Views.MainView">
+
+    <UserControl.DataContext>
+        <vm:MainViewModel />
+    </UserControl.DataContext>
+
+    <StackPanel Margin="20" Spacing="10">
+
+        <!-- Title -->
+        <TextBlock Text="Linear List MVVM Demo 🔥" FontSize="20" Foreground="White"/>
+
+        <!-- Current Element -->
+        <TextBlock Text="{Binding CurrentElement}" FontSize="16" FontWeight="Bold" Foreground="White"/>
+
+        <!-- Move controls -->
+        <StackPanel Orientation="Horizontal" Spacing="8">
+            <Button Content="Next ⏩" Command="{Binding MoveNextCommand}" />
+            <Button Content="First ⏮" Command="{Binding MoveFirstCommand}" />
+        </StackPanel>
+
+        <!-- Add Item -->
+        <StackPanel Orientation="Horizontal" Spacing="8">
+            <TextBox Width="200" Watermark="Enter new item..." Text="{Binding NewItemText}" />
+            <Button Content="Add ➕" Command="{Binding AddItemCommand}" />
+        </StackPanel>
+
+        <!-- List with remove buttons -->
+        <ItemsControl ItemsSource="{Binding Items}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal" Spacing="8">
+                        <TextBlock Text="{Binding}" Width="150" Foreground="White"/>
+                        <Button Content="❌"
+                                Command="{Binding DataContext.RemoveItemCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                CommandParameter="{Binding}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+
+    </StackPanel>
+</UserControl>

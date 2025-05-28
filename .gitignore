@@ -1,0 +1,11 @@
+**/bin/
+**/obj/
+.vscode/
+.DS_Store
+*.user
+*.suo
+*.cache
+*.swp
+*.vs
+*.vscode
+

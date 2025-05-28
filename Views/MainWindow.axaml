@@ -1,0 +1,14 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:views="clr-namespace:LinearListApp.Views;assembly=LinearListApp"
+        xmlns:vm="clr-namespace:LinearListApp.ViewModels;assembly=LinearListApp"
+        x:Class="LinearListApp.Views.MainWindow"
+        Title="Linear List App"
+        Width="600" Height="450">
+
+    <Window.DataContext>
+        <vm:MainViewModel/>
+    </Window.DataContext>
+
+    <views:MainView />
+</Window>
